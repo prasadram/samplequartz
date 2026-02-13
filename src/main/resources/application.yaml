@@ -1,0 +1,18 @@
+spring:
+  application.name: SampleQuartz
+  datasource:
+    url: jdbc:postgresql://localhost:5432/quartzdb
+    username: appuser
+    password: appuser
+    driver-class-name: org.postgresql.Driver
+  quartz:
+    job-store-type: jdbc
+    jdbc.initialize-schema: always
+    properties:
+      org.quartz:
+        scheduler:
+          instanceName: SampleQuartzScheduler
+          instanceId: AUTO
+        threadPool.threadCount: 5
+        jobStore.driverDelegateClass: org.quartz.impl.jdbcjobstore.PostgreSQLDelegate
+        jobStore.isClustered: false
